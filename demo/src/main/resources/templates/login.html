@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" th:href="@{../css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #002147; /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #e3f2fd; /* Light blue background for the form */
+            padding: 2.5rem; /* Increased padding for a thicker box */
+            border-radius: 0.5rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            border: 2px solid #007bff; /* Blue border around the box */
+        }
+        .login-title {
+            margin-bottom: 1.5rem;
+            color: #007bff; /* Bootstrap primary color */
+        }
+        .message {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .alert {
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+        button {
+            width: 100%;
+            background-color: #007bff; /* Blue background for the login button */
+            color: #ffffff; /* White text color for the button */
+            border: none; /* Remove default border */
+            padding: 0.75rem; /* Increased padding for a thicker button */
+            transition: background-color 0.3s ease; /* Smooth transition */
+            font-size: 1rem; /* Font size */
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .link-btn {
+            color: #007bff; /* Bootstrap primary color */
+            text-decoration: none; /* Remove underline */
+            font-size: 1rem; /* Font size */
+            padding: 0.75rem; /* Increased padding for the register link */
+        }
+        .link-btn:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        label {
+            color: #007bff; /* Set label color to blue */
+        }
+        input {
+            color: #333; /* Dark color for input text */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="text-center">
+            <h2 class="login-title">Admin and User Login Page</h2>
+        </div>
+        
+        <div class="message" th:if="${param.error}">
+            <div class="alert alert-danger" role="alert">
+                Invalid Username or Password
+            </div>
+        </div>
+        <div class="message" th:if="${param.logout}">
+            <div class="alert alert-success" role="alert">
+                Logout Successfully
+            </div>
+        </div>
+        
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Email:</label>
+                <input type="email" id="username" name="username" class="form-control" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="btn">Login</button>
+        </form>
+        
+        <div class="text-center mt-3">
+            <a href="/registration" class="link-btn">Register</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
